@@ -1,0 +1,52 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.5'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21) // Java 21 사용
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Spring Boot Starter Web (RESTful API 개발)
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// Spring Boot DevTools (핫 리로드 개발)
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	// Lombok (코드 간결화)
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// Spring Data JPA (데이터베이스 연동)
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// H2 Database (개발용 데이터베이스)
+	runtimeOnly 'com.h2database:h2'
+	// MySQL 또는 PostgreSQL 사용 시
+	// runtimeOnly 'mysql:mysql-connector-java'
+	// runtimeOnly 'org.postgresql:postgresql'
+
+	// Spring Boot Actuator (모니터링 및 진단)
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+	// Spring Security (인증/인가)
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	// Spring Boot Starter Test (테스트 의존성)
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
